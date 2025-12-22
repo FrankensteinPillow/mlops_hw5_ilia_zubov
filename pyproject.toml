@@ -1,0 +1,9 @@
+[project]
+name = "hw5"
+version = "0.1.0"
+description = "Домашнее задание № 5 по предмету 'Модели ML в продакшен'."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "scikit-learn>=1.8.0",
+]
