@@ -9,8 +9,8 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW__CORE__ENABLE_XCOM_PICKLING: "true"
     AIRFLOW_UID: 50000
-    TG_TOKEN: <TOKEN>
-    TG_CHATID: <CHATID>
+    TG_TOKEN: <token>
+    TG_CHATID: <chat_id>
     MODEL_VERSION: v0.1.1
   volumes:
     - ./dags:/opt/airflow/dags

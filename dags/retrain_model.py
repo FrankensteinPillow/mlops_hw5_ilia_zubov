@@ -3,6 +3,7 @@ from datetime import datetime
 
 import httpx
 from airflow import DAG
+from airflow.exceptions import AirflowFailException
 from airflow.operators.python import PythonOperator
 from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
@@ -33,6 +34,11 @@ def evaluate_model(**kwargs):
 
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
+    if accuracy < 0.95:
+        raise AirflowFailException(
+            f"Значение метрики accuracy слишком мало: {accuracy}. Не деплоим модель."
+        )
+
     print(f"Точность модели (Accuracy): {accuracy:.2%}")
     print("\nОтчет по классификации:")
     print(classification_report(y_test, y_pred, target_names=iris.target_names))
